@@ -1,0 +1,12 @@
+﻿  main.cpp
+C:\Users\Dell\source\repos\Project1\dynaLib\Vector.h(12,11): warning C4251: 'Vector::x': 'Number' needs to have dll-interface to be used by clients of 'Vector'
+  (compiling source file 'main.cpp')
+      C:\Users\Dell\source\repos\Project1\StaticLib\Number.h(8,7):
+      see declaration of 'Number'
+  
+C:\Users\Dell\source\repos\Project1\dynaLib\Vector.h(12,13): warning C4251: 'Vector::y': 'Number' needs to have dll-interface to be used by clients of 'Vector'
+  (compiling source file 'main.cpp')
+      C:\Users\Dell\source\repos\Project1\StaticLib\Number.h(8,7):
+      see declaration of 'Number'
+  
+  Project1.vcxproj -> C:\Users\Dell\source\repos\Project1\x64\Debug\Project1.exe
