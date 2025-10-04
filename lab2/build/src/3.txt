@@ -1,0 +1,201 @@
+//n=100
+blocks n/2 * n/2
+
+threads: 1
+Execution time: 2712
+threads: 2
+Execution time: 21020
+threads: 3
+Execution time: 12287
+threads: 4
+Execution time: 30758
+threads: 5
+Execution time: 20444
+threads: 6
+Execution time: 17943
+threads: 7
+Execution time: 3965
+threads: 8
+Execution time: 2359
+threads: 9
+Execution time: 4261
+threads: 10
+Execution time: 11667
+threads: 11
+Execution time: 12294
+threads: 12
+Execution time: 8940
+threads: 13
+Execution time: 2330
+threads: 14
+Execution time: 2630
+threads: 15
+Execution time: 3781
+threads: 16
+Execution time: 2287
+threads: 17
+Execution time: 11445
+threads: 18
+Execution time: 2284
+threads: 19
+Execution time: 2325
+threads: 20
+Execution time: 11086
+threads: 21
+Execution time: 2278
+threads: 22
+Execution time: 2302
+threads: 23
+Execution time: 2279
+threads: 24
+Execution time: 11095
+threads: 25
+Execution time: 2270
+threads: 26
+Execution time: 2270
+threads: 27
+Execution time: 2284
+threads: 28
+Execution time: 2267
+threads: 29
+Execution time: 11550
+threads: 30
+Execution time: 2296
+threads: 31
+Execution time: 3347
+threads: 32
+Execution time: 10310
+threads: 33
+Execution time: 2491
+threads: 34
+Execution time: 2331
+threads: 35
+Execution time: 2322
+threads: 36
+Execution time: 4214
+threads: 37
+Execution time: 2329
+threads: 38
+Execution time: 11150
+threads: 39
+Execution time: 2372
+threads: 40
+Execution time: 2332
+threads: 41
+Execution time: 11186
+threads: 42
+Execution time: 2299
+threads: 43
+Execution time: 2315
+threads: 44
+Execution time: 11158
+threads: 45
+Execution time: 2270
+threads: 46
+Execution time: 11009
+threads: 47
+Execution time: 2294
+threads: 48
+Execution time: 11068
+threads: 49
+Execution time: 2392
+threads: 50
+Execution time: 4195
+threads: 51
+Execution time: 21286
+threads: 52
+Execution time: 12545
+threads: 53
+Execution time: 12900
+threads: 54
+Execution time: 4509
+threads: 55
+Execution time: 8327
+threads: 56
+Execution time: 2642
+threads: 57
+Execution time: 4206
+threads: 58
+Execution time: 2330
+threads: 59
+Execution time: 2375
+threads: 60
+Execution time: 2376
+threads: 61
+Execution time: 11032
+threads: 62
+Execution time: 2339
+threads: 63
+Execution time: 11147
+threads: 64
+Execution time: 2269
+threads: 65
+Execution time: 2358
+threads: 66
+Execution time: 2396
+threads: 67
+Execution time: 2293
+threads: 68
+Execution time: 9916
+threads: 69
+Execution time: 2540
+threads: 70
+Execution time: 2319
+threads: 71
+Execution time: 2301
+threads: 72
+Execution time: 2442
+threads: 73
+Execution time: 11352
+threads: 74
+Execution time: 2393
+threads: 75
+Execution time: 10987
+threads: 76
+Execution time: 2376
+threads: 77
+Execution time: 2401
+threads: 78
+Execution time: 11169
+threads: 79
+Execution time: 2423
+threads: 80
+Execution time: 2279
+threads: 81
+Execution time: 11167
+threads: 82
+Execution time: 2390
+threads: 83
+Execution time: 11051
+threads: 84
+Execution time: 2321
+threads: 85
+Execution time: 3539
+threads: 86
+Execution time: 2791
+threads: 87
+Execution time: 11077
+threads: 88
+Execution time: 2309
+threads: 89
+Execution time: 2302
+threads: 90
+Execution time: 11157
+threads: 91
+Execution time: 2396
+threads: 92
+Execution time: 2487
+threads: 93
+Execution time: 2304
+threads: 94
+Execution time: 11154
+threads: 95
+Execution time: 2285
+threads: 96
+Execution time: 2386
+threads: 97
+Execution time: 4207
+threads: 98
+Execution time: 11233
+threads: 99
+Execution time: 2336

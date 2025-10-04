@@ -1,0 +1,52 @@
+//n=500
+//i5 8350u 4-core
+ 
+threads: 20
+r: 100 c: 100
+Execution time: 3999370
+
+threads: 20
+r: 10 c: 10
+Execution time: 1561273
+
+//n=1000
+threads: 20
+r: 2 c: 2
+Execution time: 4163777
+
+threads: 20
+r: 20 c: 20
+Execution time: 7720232
+
+threads: 20
+r: 2 c: 4
+Execution time: 6959482
+
+threads: 20
+r: 2 c: 2
+Execution time: 6770029
+
+threads: 20
+r: 4 c: 2
+Execution time: 8905295
+
+threads: 20
+r: 12 c: 12
+Execution time: 11610593
+
+threads: 8
+r: 12 c: 12
+Execution time: 11923243
+
+threads: 8
+r: 2 c: 2
+Execution time: 6254081
+
+threads: 8
+r: 2 c: 4
+Execution time: 12604174
+
+threads: 4
+r: 2 c: 4
+Execution time: 11099497
+

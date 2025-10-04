@@ -1,0 +1,24 @@
+//blocks only for rows
+threads: 1
+Execution time: 11902327
+threads: 2
+Execution time: 5665582
+threads: 3
+Execution time: 5216859
+threads: 4
+Execution time: 4253340
+threads: 5
+Execution time: 5684583
+threads: 6
+Execution time: 5218579
+threads: 7
+Execution time: 10904772
+threads: 8
+Execution time: 5865235
+threads: 10
+Execution time: 3627131
+
+threads: 100
+Execution time: 4439457
+threads: 900
+Execution time: 5343543

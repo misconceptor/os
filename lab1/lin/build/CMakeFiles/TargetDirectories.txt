@@ -1,0 +1,7 @@
+/home/artsiomh/tema/build/CMakeFiles/edit_cache.dir
+/home/artsiomh/tema/build/CMakeFiles/rebuild_cache.dir
+/home/artsiomh/tema/build/src/CMakeFiles/Number.dir
+/home/artsiomh/tema/build/src/CMakeFiles/Vector.dir
+/home/artsiomh/tema/build/src/CMakeFiles/main.dir
+/home/artsiomh/tema/build/src/CMakeFiles/edit_cache.dir
+/home/artsiomh/tema/build/src/CMakeFiles/rebuild_cache.dir
