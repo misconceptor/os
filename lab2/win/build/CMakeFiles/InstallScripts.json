@@ -1,0 +1,8 @@
+{
+	"InstallScripts" : 
+	[
+		"D:/lab2/build/cmake_install.cmake",
+		"D:/lab2/build/src/cmake_install.cmake"
+	],
+	"Parallel" : false
+}
