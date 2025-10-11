@@ -1,64 +1,84 @@
 #include <iostream>
 #include <chrono>
-#include <thread>
-#include <time.h>
 #include <sys/time.h>
-#include <random>
 #include <vector>
+#include <thread>
+#include <mutex>
 using namespace std;
 typedef vector<int> vi;
 typedef vector<vi> vvi;
-const int n=500;
-void slowmult(vvi& a, vvi& b, vvi&c){
-	for(int i=0;i<n;++i){
-		for(int j=0;j<n;++j){
-			int sum=0;
-			for(int k=0;k<n;++k){
-				sum+=a[i][k]*b[k][j];
-			}
-			c[i][j]=sum;
-		}
-	}
-}
-void mult(vvi& a, vvi& b, vvi&c, int rs, int rf,int cs, int cf){// [s,f) are ind. of rows
-	for(int i=rs;i<rf;++i){
-		for(int j=cs;j<cf;++j){
-			int sum=0;
-			for(int k=0;k<n;++k){
-				sum+=a[i][k]*b[k][j];
-			}
-			c[i][j]=sum;
-		}
-	}
-}
-void solve(int row_blocks, int col_blocks){
-	cout<<"r: "<<row_blocks<<" c: "<<col_blocks<<endl;
-	int row_block_size=n/row_blocks;
-	int col_block_size=n/col_blocks;
-	vvi a(n,vi(n,2));
-	vvi b(n,vi(n,3));
-	vvi c(n,vi(n,0));
-	vector<thread> th;
-	auto start = std::chrono::high_resolution_clock::now();
-	for (int i = 0; i < row_blocks; i+=row_block_size) {
-        int row_start = i * row_block_size;
-        int row_end = (i == row_blocks - 1)?n : row_start + row_block_size;
-        for (int j = 0; j < col_blocks; j+=col_block_size){
-            int col_start = j * col_block_size;
-            int col_end = (j == col_blocks - 1)?n : col_start + col_block_size;
+void mulBlock(const vvi& A, const vvi& B, vvi& C,
+                   int blockRow, int blockCol, int blockSize, int blocksPerDim,
+                   mutex& mtx) {
+    int N = blockSize;
+    vvi tempBlock(N, vi(N, 0.0));
 
-            th.emplace_back(mult,ref(a),ref(b),ref(c),
-                    row_start, row_end, col_start, col_end);
+    for (int k = 0; k < blocksPerDim; ++k) {
+        for (int i = 0; i < N; ++i) {
+            for (int j = 0; j < N; ++j) {
+                for (int x = 0; x < N; ++x) {
+                    tempBlock[i][j]+=A[blockRow*N+i][k*N+x]*B[k*N+x][blockCol*N+j];
+                }
+            }
         }
     }
-	for(auto&t:th){
-		t.join();	
-	}
-	auto end = std::chrono::high_resolution_clock::now();
-    auto d= std::chrono::duration_cast<std::chrono::microseconds>(end - start);
-    cout<<"Execution time: "<< d.count()<<"\n\n";
+
+    lock_guard<mutex> lock(mtx);
+    for (int i = 0; i < N; ++i) {
+        for (int j = 0; j < N; ++j) {
+            C[blockRow * N + i][blockCol * N + j] = tempBlock[i][j];
+        }
+    }
 }
+
+void solve(const vvi& A, const vvi& B, vvi& C,
+    int blockSize, int blocksPerDim, mutex& mtx,
+    int startBlock, int endBlock) 
+{
+    for (int blockIndex = startBlock; blockIndex < endBlock; ++blockIndex) {
+        int blockRow = blockIndex / blocksPerDim;
+        int blockCol = blockIndex % blocksPerDim;
+        mulBlock(A, B, C, blockRow, blockCol, blockSize, blocksPerDim, mtx);
+    }
+}
+
+void res(int N,int blockSize) {
+    const int blocksPerDim = N / blockSize;
+    vvi A(N, vi(N, 1)), B(N, vi(N, 1)), C(N, vi(N, 0));
+    // cout<<"n "<<N<<endl;
+    // cout<<"blsize "<<blockSize<<endl;
+    mutex mtx;
+
+    int totalBlocks = blocksPerDim * blocksPerDim;
+    // cout<<"totBl "<<totalBlocks<<endl;
+    int numThreads = thread::hardware_concurrency();
+    // cout<<"th "<<numThreads<<endl;
+    if (numThreads == 0) numThreads = 4;
+    int blocksPerThread = totalBlocks / numThreads;
+
+	auto start = std::chrono::high_resolution_clock::now();
+
+    vector<thread> threads;
+    for (int i = 0; i < numThreads; ++i) {
+        int startBlock = i * blocksPerThread;
+        int endBlock = (i == numThreads-1) ? totalBlocks : startBlock + blocksPerThread;
+
+        threads.emplace_back(solve, cref(A), cref(B), ref(C),
+                             blockSize, blocksPerDim, ref(mtx),
+                             startBlock, endBlock);
+    }
+
+    for (auto& t : threads)
+        t.join();
+
+	auto end = std::chrono::high_resolution_clock::now();
+    auto d= std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
+    cout<<"time: "<< d.count()<<"\n\n";
+
+}
+
 int main(){
-	solve(32,32);
-	return 0;
+    //for(int i=16;i<=512;i*=2)
+    res(1000,800);
+    return 0;
 }
