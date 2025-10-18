@@ -1,0 +1,20 @@
+//n=700
+bs=100 time: 2071 ms
+bs=200 time: 1482 ms
+bs=300 time: 4377 ms
+bs=400 time: 1308 ms
+bs=500 time: 2603 ms
+bs=600 time: 4594 ms
+bs=700 time: 7536 ms
+
+//n=1000:
+bs=100 time: 5674 ms
+bs=200 time: 5512 ms
+bs=300 time: 4993 ms
+bs=400 time: 10603 ms
+bs=500 time: 20993 ms
+bs=600 time: 4545 ms
+bs=700 time: 7219 ms
+bs=800 time: 10975 ms
+bs=900 time: 15947 ms
+bs=1000 time: 22578 ms
