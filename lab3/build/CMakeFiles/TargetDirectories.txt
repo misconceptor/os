@@ -1,0 +1,5 @@
+/home/artsiomh/os/lab3/build/CMakeFiles/edit_cache.dir
+/home/artsiomh/os/lab3/build/CMakeFiles/rebuild_cache.dir
+/home/artsiomh/os/lab3/build/src/CMakeFiles/main.dir
+/home/artsiomh/os/lab3/build/src/CMakeFiles/edit_cache.dir
+/home/artsiomh/os/lab3/build/src/CMakeFiles/rebuild_cache.dir

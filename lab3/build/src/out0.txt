@@ -1,0 +1,50 @@
+N=: 100, block Size: 100
+blocks per dim: 1, total blocks: 1
+threads: 8
+Time: 68 ms
+
+N=: 200, block Size: 100
+blocks per dim: 2, total blocks: 4
+threads: 8
+Time: 162 ms
+
+N=: 300, block Size: 100
+blocks per dim: 3, total blocks: 9
+threads: 8
+Time: 248 ms
+
+N=: 400, block Size: 100
+blocks per dim: 4, total blocks: 16
+threads: 8
+Time: 316 ms
+
+N=: 500, block Size: 100
+blocks per dim: 5, total blocks: 25
+threads: 8
+Time: 689 ms
+
+N=: 600, block Size: 100
+blocks per dim: 6, total blocks: 36
+threads: 8
+Time: 1089 ms
+
+N=: 700, block Size: 100
+blocks per dim: 7, total blocks: 49
+threads: 8
+Time: 1820 ms
+
+N=: 800, block Size: 100
+blocks per dim: 8, total blocks: 64
+threads: 8
+Time: 2557 ms
+
+N=: 900, block Size: 100
+blocks per dim: 9, total blocks: 81
+threads: 8
+Time: 3763 ms
+
+N=: 1000, block Size: 100
+blocks per dim: 10, total blocks: 100
+threads: 8
+Time: 5057 ms
+
