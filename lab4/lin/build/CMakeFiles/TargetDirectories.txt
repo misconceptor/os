@@ -1,0 +1,6 @@
+/home/artemh/cccppp/build/CMakeFiles/edit_cache.dir
+/home/artemh/cccppp/build/CMakeFiles/rebuild_cache.dir
+/home/artemh/cccppp/build/src/CMakeFiles/killer.dir
+/home/artemh/cccppp/build/src/CMakeFiles/user.dir
+/home/artemh/cccppp/build/src/CMakeFiles/edit_cache.dir
+/home/artemh/cccppp/build/src/CMakeFiles/rebuild_cache.dir
