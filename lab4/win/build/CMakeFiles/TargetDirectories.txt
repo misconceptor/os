@@ -1,0 +1,4 @@
+C:/Users/Dell/Downloads/proc/build/CMakeFiles/killer.dir
+C:/Users/Dell/Downloads/proc/build/CMakeFiles/user.dir
+C:/Users/Dell/Downloads/proc/build/CMakeFiles/edit_cache.dir
+C:/Users/Dell/Downloads/proc/build/CMakeFiles/rebuild_cache.dir
