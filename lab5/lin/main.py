@@ -1,25 +1,21 @@
 import subprocess
 import sys
 
-print("input numbers:")
-input_data = sys.stdin.readline().strip()# + "\n"
+def run_linux_pipeline():
+    pM = subprocess.Popen(['./m.py'], stdin=subprocess.PIPE, stdout=subprocess.PIPE, text=True)
+    pA = subprocess.Popen(['./a.py'], stdin=pM.stdout, stdout=subprocess.PIPE, text=True)
+    pP = subprocess.Popen(['./p.py'], stdin=pA.stdout, stdout=subprocess.PIPE, text=True)
+    pS = subprocess.Popen(['./s.py'], stdin=pP.stdout, stdout=subprocess.PIPE, text=True)
 
-print("[p]", end=' ')
-p = subprocess.Popen(['python3', 'p.py'], stdin=subprocess.PIPE, stdout=subprocess.PIPE, text=True)
-p_out, _ = p.communicate(input=input_data)
-print(p_out.strip())
+    pM.stdout.close()
+    pA.stdout.close()
+    pP.stdout.close()
 
-print("[a]", end=' ')
-a = subprocess.Popen(['python3', 'a.py'], stdin=subprocess.PIPE, stdout=subprocess.PIPE, text=True)
-a_out, _ = a.communicate(input=p_out)
-print(a_out.strip())
+    nums = input("Enter numbers: ")
+    pM.stdin.write(nums + "\n")
+    pM.stdin.close()
 
-print("[m]", end=' ')
-m = subprocess.Popen(['python3', 'm.py'], stdin=subprocess.PIPE, stdout=subprocess.PIPE, text=True)
-m_out, _ = m.communicate(input=a_out)
-print(m_out.strip())
+    print(f"Answer: {pS.communicate()[0].strip()}")
 
-print("[s]", end=' ')
-s = subprocess.Popen(['python3', 's.py'], stdin=subprocess.PIPE, stdout=subprocess.PIPE, text=True)
-s_out, _ = s.communicate(input=m_out)
-print(s_out.strip())
+if __name__ == "__main__":
+    run_linux_pipeline()
