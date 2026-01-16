@@ -1,19 +1,23 @@
-import sys
 import subprocess
-def run_pipeline(programs, input_line):
-    input_bytes = (input_line + '\n').encode('ascii')
-    current_input = input_bytes
-    for i, prog in enumerate(programs):
-        result = subprocess.run([prog], input=current_input, 
-                               capture_output=True, text=False)
-        if result.returncode != 0:
-            print(f"Error in {prog}: {result.stderr.decode()}")
-            return
-        current_input = result.stdout
-        print(f"{prog}: {result.stdout.decode().strip()}")
-    return result.stdout.decode().strip()
+import sys
+def run_pipeline():
+    pM = subprocess.Popen([sys.executable, 'm.py'], stdin=subprocess.PIPE, stdout=subprocess.PIPE, text=True)
+    pA = subprocess.Popen([sys.executable, 'a.py'], stdin=pM.stdout, stdout=subprocess.PIPE, text=True)
+    pP = subprocess.Popen([sys.executable, 'p.py'], stdin=pA.stdout, stdout=subprocess.PIPE, text=True)
+    pS = subprocess.Popen([sys.executable, 's.py'], stdin=pP.stdout, stdout=subprocess.PIPE, text=True)
+
+    pM.stdout.close()
+    pA.stdout.close()
+    pP.stdout.close()
+
+    print("Numbers separated by space: ")
+    data = sys.stdin.readline()
+    
+    pM.stdin.write(data + "\n")
+    pM.stdin.close()
+
+    result = pS.communicate()[0]
+    print(f"Answer: {result.strip()}")
 
 if __name__ == "__main__":
-    input_line = sys.stdin.readline().strip()
-    output = run_pipeline(["a.exe", "m.exe", "p.exe", "s.exe"], input_line)
-    print(f"answer: {output}")
+    run_pipeline()
