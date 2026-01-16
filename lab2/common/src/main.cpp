@@ -111,7 +111,7 @@ int main() {
 
     cout << "Matrix Block Multiplication (N=" << N << ")" << endl;
     cout << setw(10) << "Block k" << setw(15) << "Threads" << setw(15) << "Time" << endl;
-    cout << string(42, '-') << endl;
+    cout<<endl;
     vi k_values = {600, 300, 200, 150, 120, 100, 75};
     for (int k : k_values) {
         run_experiment(N, k, A, B, C);
