@@ -55,6 +55,8 @@ src/CMakeFiles/main.dir/main.cpp.o: /home/artemh/os/lab2/common/src/main.cpp \
   /usr/include/c++/13/bits/requires_hosted.h \
   /usr/include/c++/13/bits/sstream.tcc \
   /usr/include/c++/13/bits/std_abs.h \
+  /usr/include/c++/13/bits/std_mutex.h \
+  /usr/include/c++/13/bits/std_thread.h \
   /usr/include/c++/13/bits/stl_algobase.h \
   /usr/include/c++/13/bits/stl_bvector.h \
   /usr/include/c++/13/bits/stl_construct.h \
@@ -69,6 +71,9 @@ src/CMakeFiles/main.dir/main.cpp.o: /home/artemh/os/lab2/common/src/main.cpp \
   /usr/include/c++/13/bits/streambuf_iterator.h \
   /usr/include/c++/13/bits/string_view.tcc \
   /usr/include/c++/13/bits/stringfwd.h \
+  /usr/include/c++/13/bits/this_thread_sleep.h \
+  /usr/include/c++/13/bits/unique_lock.h \
+  /usr/include/c++/13/bits/unique_ptr.h \
   /usr/include/c++/13/bits/uses_allocator.h \
   /usr/include/c++/13/bits/uses_allocator_args.h \
   /usr/include/c++/13/bits/utility.h \
@@ -100,6 +105,7 @@ src/CMakeFiles/main.dir/main.cpp.o: /home/artemh/os/lab2/common/src/main.cpp \
   /usr/include/c++/13/istream \
   /usr/include/c++/13/limits \
   /usr/include/c++/13/locale \
+  /usr/include/c++/13/mutex \
   /usr/include/c++/13/new \
   /usr/include/c++/13/ostream \
   /usr/include/c++/13/pstl/pstl_config.h \
@@ -110,6 +116,7 @@ src/CMakeFiles/main.dir/main.cpp.o: /home/artemh/os/lab2/common/src/main.cpp \
   /usr/include/c++/13/string \
   /usr/include/c++/13/string_view \
   /usr/include/c++/13/system_error \
+  /usr/include/c++/13/thread \
   /usr/include/c++/13/tuple \
   /usr/include/c++/13/type_traits \
   /usr/include/c++/13/typeinfo \
@@ -239,8 +246,6 @@ src/CMakeFiles/main.dir/main.cpp.o: /home/artemh/os/lab2/common/src/main.cpp \
 
 /usr/include/x86_64-linux-gnu/bits/waitstatus.h:
 
-/usr/include/x86_64-linux-gnu/bits/waitflags.h:
-
 /usr/include/x86_64-linux-gnu/bits/typesizes.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/timer_t.h:
@@ -329,15 +334,35 @@ src/CMakeFiles/main.dir/main.cpp.o: /home/artemh/os/lab2/common/src/main.cpp \
 
 /usr/include/x86_64-linux-gnu/asm/errno.h:
 
+/usr/include/stdlib.h:
+
+/usr/include/stdio.h:
+
+/usr/include/stdint.h:
+
+/usr/include/stdc-predef.h:
+
+/usr/include/x86_64-linux-gnu/c++/13/bits/time_members.h:
+
+/usr/include/sched.h:
+
+/usr/include/pthread.h:
+
+/usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h:
+
+/usr/include/locale.h:
+
 /usr/include/c++/13/bits/stl_algobase.h:
 
-/usr/include/x86_64-linux-gnu/bits/types/__fpos_t.h:
-
-/usr/include/c++/13/bits/refwrap.h:
+/usr/include/c++/13/bits/std_thread.h:
 
 /usr/include/c++/13/debug/debug.h:
 
 /usr/include/c++/13/stdexcept:
+
+/usr/include/x86_64-linux-gnu/bits/types/__fpos_t.h:
+
+/usr/include/c++/13/bits/refwrap.h:
 
 /usr/include/c++/13/bits/locale_facets_nonio.tcc:
 
@@ -349,11 +374,9 @@ src/CMakeFiles/main.dir/main.cpp.o: /home/artemh/os/lab2/common/src/main.cpp \
 
 /usr/include/c++/13/bits/memoryfwd.h:
 
-/usr/include/wchar.h:
-
-/usr/include/c++/13/bits/memory_resource.h:
-
 /usr/include/c++/13/bits/invoke.h:
+
+/usr/include/c++/13/bits/std_mutex.h:
 
 /usr/include/c++/13/bits/stl_construct.h:
 
@@ -399,7 +422,9 @@ src/CMakeFiles/main.dir/main.cpp.o: /home/artemh/os/lab2/common/src/main.cpp \
 
 /usr/include/c++/13/bits/ios_base.h:
 
-/usr/include/c++/13/bits/move.h:
+/usr/include/c++/13/mutex:
+
+/usr/include/c++/13/bits/unique_lock.h:
 
 /usr/include/x86_64-linux-gnu/sys/single_threaded.h:
 
@@ -455,8 +480,6 @@ src/CMakeFiles/main.dir/main.cpp.o: /home/artemh/os/lab2/common/src/main.cpp \
 
 /usr/include/c++/13/bits/chrono.h:
 
-/usr/include/c++/13/string:
-
 /usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
 
 /usr/include/x86_64-linux-gnu/bits/stdlib-float.h:
@@ -464,6 +487,8 @@ src/CMakeFiles/main.dir/main.cpp.o: /home/artemh/os/lab2/common/src/main.cpp \
 /usr/include/c++/13/streambuf:
 
 /usr/include/c++/13/bits/exception.h:
+
+/usr/include/c++/13/bits/move.h:
 
 /usr/include/x86_64-linux-gnu/bits/types.h:
 
@@ -485,17 +510,17 @@ src/CMakeFiles/main.dir/main.cpp.o: /home/artemh/os/lab2/common/src/main.cpp \
 
 /usr/include/c++/13/ext/alloc_traits.h:
 
+/usr/include/c++/13/ios:
+
 /usr/include/x86_64-linux-gnu/c++/13/bits/messages_members.h:
 
 /usr/include/x86_64-linux-gnu/bits/libc-header-start.h:
 
-/usr/include/c++/13/bits/stl_iterator.h:
-
 /usr/include/c++/13/bits/functexcept.h:
 
-/usr/include/c++/13/ios:
+/usr/include/c++/13/bits/stl_iterator.h:
 
-/usr/include/stdc-predef.h:
+/usr/include/c++/13/string:
 
 /usr/include/asm-generic/errno.h:
 
@@ -506,6 +531,16 @@ src/CMakeFiles/main.dir/main.cpp.o: /home/artemh/os/lab2/common/src/main.cpp \
 /usr/include/c++/13/locale:
 
 /usr/include/c++/13/bits/stl_uninitialized.h:
+
+/usr/include/wchar.h:
+
+/usr/include/c++/13/bits/memory_resource.h:
+
+/usr/include/c++/13/bits/this_thread_sleep.h:
+
+/usr/include/x86_64-linux-gnu/bits/waitflags.h:
+
+/usr/include/c++/13/bits/unique_ptr.h:
 
 /usr/include/x86_64-linux-gnu/bits/errno.h:
 
@@ -534,8 +569,6 @@ src/CMakeFiles/main.dir/main.cpp.o: /home/artemh/os/lab2/common/src/main.cpp \
 /usr/include/x86_64-linux-gnu/bits/stdint-least.h:
 
 /usr/include/c++/13/cerrno:
-
-/usr/include/stdio.h:
 
 /usr/include/c++/13/chrono:
 
@@ -580,6 +613,8 @@ src/CMakeFiles/main.dir/main.cpp.o: /home/artemh/os/lab2/common/src/main.cpp \
 /usr/include/c++/13/ext/type_traits.h:
 
 /usr/include/c++/13/iostream:
+
+/usr/include/c++/13/thread:
 
 /usr/include/c++/13/initializer_list:
 
@@ -630,17 +665,3 @@ src/CMakeFiles/main.dir/main.cpp.o: /home/artemh/os/lab2/common/src/main.cpp \
 /usr/include/x86_64-linux-gnu/bits/pthread_stack_min-dynamic.h:
 
 /usr/include/linux/errno.h:
-
-/usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h:
-
-/usr/include/locale.h:
-
-/usr/include/pthread.h:
-
-/usr/include/x86_64-linux-gnu/c++/13/bits/time_members.h:
-
-/usr/include/sched.h:
-
-/usr/include/stdint.h:
-
-/usr/include/stdlib.h:

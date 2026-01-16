@@ -1,108 +1,124 @@
 #include <iostream>
 #include <vector>
-#include <pthread.h>
 #include <chrono>
 #include <iomanip>
+
+#if defined(_WIN32)
+    #include <windows.h>
+    #define USE_WINDOWS_API
+#else
+    #include <thread>
+    #include <mutex>
+#endif
 
 using namespace std;
 using vi = vector<int>;
 using vvi = vector<vi>;
 
-struct BlockTask {
-    const vvi* A;
-    const vvi* B;
-    vvi* C;
-    int row, col, blockSize, blocksPerDim;
-    pthread_mutex_t* mtx;
+struct ThreadData {
+    const vvi *A, *B;
+    vvi *C;
+    int row, col, k, blocksPerDim;
 };
 
-void standardMul(const vvi& A, const vvi& B, vvi& C, int N) {
-    for (int i = 0; i < N; ++i) {
-        for (int j = 0; j < N; ++j) {
-            for (int k = 0; k < N; ++k) {
-                C[i][j] += A[i][k] * B[k][j];
-            }
-        }
-    }
-}
-void* multiplyBlockThread(void* args) {
-    BlockTask* task = (BlockTask*)args;
-    int k = task->blockSize;
-    int rowStart = task->row * k;
-    int colStart = task->col * k;
-    vvi tempBlock(k, vi(k, 0));
+#ifdef USE_WINDOWS_API
+    CRITICAL_SECTION cs;
+#else
+    mutex mtx;
+#endif
 
-    for (int m = 0; m < task->blocksPerDim; ++m) {
+void multiplyBlock(const vvi* A, const vvi* B, vvi* C, int row, int col, int k, int blocksPerDim) {
+    int rS = row * k, cS = col * k;
+    vvi temp(k, vi(k, 0));
+
+    for (int m = 0; m < blocksPerDim; ++m) {
         int innerStart = m * k;
         for (int i = 0; i < k; ++i) {
             for (int j = 0; j < k; ++j) {
                 for (int x = 0; x < k; ++x) {
-                    tempBlock[i][j] += (*task->A)[rowStart + i][innerStart + x] * (*task->B)[innerStart + x][colStart + j];
+                    temp[i][j] += (*A)[rS + i][innerStart + x] * (*B)[innerStart + x][cS + j];
                 }
             }
         }
     }
 
-    pthread_mutex_lock(task->mtx);
-    for (int i = 0; i < k; ++i) {
-        for (int j = 0; j < k; ++j) {
-            (*task->C)[rowStart + i][colStart + j] = tempBlock[i][j];
-        }
-    }
-    pthread_mutex_unlock(task->mtx);
-    return nullptr;
+#ifdef USE_WINDOWS_API
+    EnterCriticalSection(&cs);
+#else
+    mtx.lock();
+#endif
+    for (int i = 0; i < k; ++i)
+        for (int j = 0; j < k; ++j)
+            (*C)[rS + i][cS + j] = temp[i][j];
+#ifdef USE_WINDOWS_API
+    LeaveCriticalSection(&cs);
+#else
+    mtx.unlock();
+#endif
 }
-void run(int N, int k) {
+
+#ifdef USE_WINDOWS_API
+DWORD WINAPI WinThreadFunc(LPVOID lpParam) {
+    ThreadData* data = (ThreadData*)lpParam;
+    multiplyBlock(data->A, data->B, data->C, data->row, data->col, data->k, data->blocksPerDim);
+    return 0;
+}
+#endif
+
+void run_experiment(int N, int k, const vvi& A, const vvi& B, vvi& C) {
     if (N % k != 0) return;
     int blocksPerDim = N / k;
     int totalThreads = blocksPerDim * blocksPerDim;
     
-    vvi A(N, vi(N, 1)), B(N, vi(N, 1)), C(N, vi(N, 0));
-    pthread_mutex_t mtx;
-    pthread_mutex_init(&mtx, nullptr);
+    for(auto& row : C) fill(row.begin(), row.end(), 0);
 
-    vector<pthread_t> threads(totalThreads);
-    vector<BlockTask> tasks(totalThreads);
-
+    vector<ThreadData> taskList(totalThreads);
     auto start = chrono::high_resolution_clock::now();
 
+#ifdef USE_WINDOWS_API
+    vector<HANDLE> threads(totalThreads);
     for (int i = 0; i < blocksPerDim; ++i) {
         for (int j = 0; j < blocksPerDim; ++j) {
             int idx = i * blocksPerDim + j;
-            tasks[idx] = {&A, &B, &C, i, j, k, blocksPerDim, &mtx};
-            pthread_create(&threads[idx], nullptr, multiplyBlockThread, &tasks[idx]);
+            taskList[idx] = {&A, &B, &C, i, j, k, blocksPerDim};
+            threads[idx] = CreateThread(NULL, 65536, WinThreadFunc, &taskList[idx], STACK_SIZE_PARAM_IS_A_RESERVATION, NULL);
         }
     }
-
-    for (int i = 0; i < totalThreads; ++i) {
-        pthread_join(threads[i], nullptr);
+    WaitForMultipleObjects(totalThreads, threads.data(), TRUE, INFINITE);
+    for (HANDLE h : threads) CloseHandle(h);
+#else
+    vector<thread> threads;
+    for (int i = 0; i < blocksPerDim; ++i) {
+        for (int j = 0; j < blocksPerDim; ++j) {
+            threads.emplace_back(multiplyBlock, &A, &B, &C, i, j, k, blocksPerDim);
+        }
     }
+    for (auto& t : threads) t.join();
+#endif
 
     auto end = chrono::high_resolution_clock::now();
-    auto duration = chrono::duration_cast<chrono::milliseconds>(end - start);
-
-    cout<<setw(12)<<k<<setw(20)<<totalThreads<<setw(20)<<duration.count()<<" ms\n";
-    pthread_mutex_destroy(&mtx);
+    cout << setw(10) << k << setw(15) << totalThreads 
+         << setw(15) << chrono::duration_cast<chrono::milliseconds>(end - start).count() << " ms" << endl;
 }
 
 int main() {
     int N = 600;
-    
-    vvi A(N, vi(N, 1)), B(N, vi(N, 1)), C_std(N, vi(N, 0));
+#ifdef USE_WINDOWS_API
+    InitializeCriticalSection(&cs);
+#endif
 
-    cout<<"standard algorithm: ";
+    vvi A(N, vi(N, 1)), B(N, vi(N, 1)), C(N, vi(N, 0));
 
-    auto s_start = chrono::high_resolution_clock::now();
-    standardMul(A, B, C_std, N);
-    auto s_end = chrono::high_resolution_clock::now();
-
-    cout<<chrono::duration_cast<chrono::milliseconds>(s_end - s_start).count()<<" ms\n";
-    cout<<setw(12)<<"Block Size"<<setw(20)<<"Threads"<<setw(20)<<"Time\n";
-
-    vi k_values = {600, 300, 150, 120, 100, 75, 60, 50, 30};
+    cout << "Matrix Block Multiplication (N=" << N << ")" << endl;
+    cout << setw(10) << "Block k" << setw(15) << "Threads" << setw(15) << "Time" << endl;
+    cout << string(42, '-') << endl;
+    vi k_values = {600, 300, 200, 150, 120, 100, 75};
     for (int k : k_values) {
-        run(N, k);
+        run_experiment(N, k, A, B, C);
     }
 
+#ifdef USE_WINDOWS_API
+    DeleteCriticalSection(&cs);
+#endif
     return 0;
 }
