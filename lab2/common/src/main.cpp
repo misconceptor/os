@@ -2,6 +2,7 @@
 #include <vector>
 #include <chrono>
 #include <iomanip>
+#include <algorithm>
 
 #if defined(_WIN32)
     #include <windows.h>
@@ -26,6 +27,18 @@ struct ThreadData {
 #else
     mutex mtx;
 #endif
+
+void standardMultiplication(const vvi& A, const vvi& B, vvi& C, int N) {
+    for (int i = 0; i < N; ++i) {
+        for (int j = 0; j < N; ++j) {
+            int sum = 0;
+            for (int l = 0; l < N; ++l) {
+                sum += A[i][l] * B[l][j];
+            }
+            C[i][j] = sum;
+        }
+    }
+}
 
 void multiplyBlock(const vvi* A, const vvi* B, vvi* C, int row, int col, int k, int blocksPerDim) {
     int rS = row * k, cS = col * k;
@@ -65,7 +78,7 @@ DWORD WINAPI WinThreadFunc(LPVOID lpParam) {
 }
 #endif
 
-void run_experiment(int N, int k, const vvi& A, const vvi& B, vvi& C) {
+void run(int N, int k, const vvi& A, const vvi& B, vvi& C) {
     if (N % k != 0) return;
     int blocksPerDim = N / k;
     int totalThreads = blocksPerDim * blocksPerDim;
@@ -81,6 +94,7 @@ void run_experiment(int N, int k, const vvi& A, const vvi& B, vvi& C) {
         for (int j = 0; j < blocksPerDim; ++j) {
             int idx = i * blocksPerDim + j;
             taskList[idx] = {&A, &B, &C, i, j, k, blocksPerDim};
+            // Using 64KB stack reservation to prevent bad_alloc on Windows
             threads[idx] = CreateThread(NULL, 65536, WinThreadFunc, &taskList[idx], STACK_SIZE_PARAM_IS_A_RESERVATION, NULL);
         }
     }
@@ -109,12 +123,17 @@ int main() {
 
     vvi A(N, vi(N, 1)), B(N, vi(N, 1)), C(N, vi(N, 0));
 
-    cout << "Matrix Block Multiplication (N=" << N << ")" << endl;
+    auto start_std = chrono::high_resolution_clock::now();
+    standardMultiplication(A, B, C, N);
+    auto end_std = chrono::high_resolution_clock::now();
+    cout << "Standard algorithm time: " << chrono::duration_cast<chrono::milliseconds>(end_std - start_std).count() << " ms" << endl;
+
     cout << setw(10) << "Block k" << setw(15) << "Threads" << setw(15) << "Time" << endl;
-    cout<<endl;
-    vi k_values = {600, 300, 200, 150, 120, 100, 75};
+
+    vi k_values = {600, 300, 200, 150, 120, 100, 75}; 
+    
     for (int k : k_values) {
-        run_experiment(N, k, A, B, C);
+        run(N, k, A, B, C);
     }
 
 #ifdef USE_WINDOWS_API
