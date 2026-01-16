@@ -1,4 +1,4 @@
-# Install script for directory: /home/artsiomh/os/lab2/common/src
+# Install script for directory: /home/artemh/os/lab2/common/src
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
