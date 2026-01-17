@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/artsiomh/tema/src
+CXX_INCLUDES = -I/home/artemh/os/lab1/lin/src
 
 CXX_FLAGS = 
 

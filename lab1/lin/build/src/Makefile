@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/artsiomh/tema
+CMAKE_SOURCE_DIR = /home/artemh/os/lab1/lin
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/artsiomh/tema/build
+CMAKE_BINARY_DIR = /home/artemh/os/lab1/lin/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,14 +87,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/artsiomh/tema/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/artsiomh/tema/build/CMakeFiles /home/artsiomh/tema/build/src//CMakeFiles/progress.marks
-	cd /home/artsiomh/tema/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/artsiomh/tema/build/CMakeFiles 0
+	cd /home/artemh/os/lab1/lin/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/artemh/os/lab1/lin/build/CMakeFiles /home/artemh/os/lab1/lin/build/src//CMakeFiles/progress.marks
+	cd /home/artemh/os/lab1/lin/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/artemh/os/lab1/lin/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/artsiomh/tema/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/clean
+	cd /home/artemh/os/lab1/lin/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/clean
 .PHONY : clean
 
 # The main clean target
@@ -103,22 +103,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/artsiomh/tema/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/preinstall
+	cd /home/artemh/os/lab1/lin/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/artsiomh/tema/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/preinstall
+	cd /home/artemh/os/lab1/lin/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/artsiomh/tema/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/artemh/os/lab1/lin/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 src/CMakeFiles/Number.dir/rule:
-	cd /home/artsiomh/tema/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/Number.dir/rule
+	cd /home/artemh/os/lab1/lin/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/Number.dir/rule
 .PHONY : src/CMakeFiles/Number.dir/rule
 
 # Convenience name for target.
@@ -127,12 +127,12 @@ Number: src/CMakeFiles/Number.dir/rule
 
 # fast build rule for target.
 Number/fast:
-	cd /home/artsiomh/tema/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Number.dir/build.make src/CMakeFiles/Number.dir/build
+	cd /home/artemh/os/lab1/lin/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Number.dir/build.make src/CMakeFiles/Number.dir/build
 .PHONY : Number/fast
 
 # Convenience name for target.
 src/CMakeFiles/Vector.dir/rule:
-	cd /home/artsiomh/tema/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/Vector.dir/rule
+	cd /home/artemh/os/lab1/lin/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/Vector.dir/rule
 .PHONY : src/CMakeFiles/Vector.dir/rule
 
 # Convenience name for target.
@@ -141,12 +141,12 @@ Vector: src/CMakeFiles/Vector.dir/rule
 
 # fast build rule for target.
 Vector/fast:
-	cd /home/artsiomh/tema/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Vector.dir/build.make src/CMakeFiles/Vector.dir/build
+	cd /home/artemh/os/lab1/lin/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Vector.dir/build.make src/CMakeFiles/Vector.dir/build
 .PHONY : Vector/fast
 
 # Convenience name for target.
 src/CMakeFiles/main.dir/rule:
-	cd /home/artsiomh/tema/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/main.dir/rule
+	cd /home/artemh/os/lab1/lin/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/main.dir/rule
 .PHONY : src/CMakeFiles/main.dir/rule
 
 # Convenience name for target.
@@ -155,7 +155,7 @@ main: src/CMakeFiles/main.dir/rule
 
 # fast build rule for target.
 main/fast:
-	cd /home/artsiomh/tema/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/main.dir/build.make src/CMakeFiles/main.dir/build
+	cd /home/artemh/os/lab1/lin/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/main.dir/build.make src/CMakeFiles/main.dir/build
 .PHONY : main/fast
 
 Number.o: Number.cpp.o
@@ -163,7 +163,7 @@ Number.o: Number.cpp.o
 
 # target to build an object file
 Number.cpp.o:
-	cd /home/artsiomh/tema/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Number.dir/build.make src/CMakeFiles/Number.dir/Number.cpp.o
+	cd /home/artemh/os/lab1/lin/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Number.dir/build.make src/CMakeFiles/Number.dir/Number.cpp.o
 .PHONY : Number.cpp.o
 
 Number.i: Number.cpp.i
@@ -171,7 +171,7 @@ Number.i: Number.cpp.i
 
 # target to preprocess a source file
 Number.cpp.i:
-	cd /home/artsiomh/tema/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Number.dir/build.make src/CMakeFiles/Number.dir/Number.cpp.i
+	cd /home/artemh/os/lab1/lin/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Number.dir/build.make src/CMakeFiles/Number.dir/Number.cpp.i
 .PHONY : Number.cpp.i
 
 Number.s: Number.cpp.s
@@ -179,7 +179,7 @@ Number.s: Number.cpp.s
 
 # target to generate assembly for a file
 Number.cpp.s:
-	cd /home/artsiomh/tema/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Number.dir/build.make src/CMakeFiles/Number.dir/Number.cpp.s
+	cd /home/artemh/os/lab1/lin/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Number.dir/build.make src/CMakeFiles/Number.dir/Number.cpp.s
 .PHONY : Number.cpp.s
 
 Vector.o: Vector.cpp.o
@@ -187,7 +187,7 @@ Vector.o: Vector.cpp.o
 
 # target to build an object file
 Vector.cpp.o:
-	cd /home/artsiomh/tema/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Vector.dir/build.make src/CMakeFiles/Vector.dir/Vector.cpp.o
+	cd /home/artemh/os/lab1/lin/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Vector.dir/build.make src/CMakeFiles/Vector.dir/Vector.cpp.o
 .PHONY : Vector.cpp.o
 
 Vector.i: Vector.cpp.i
@@ -195,7 +195,7 @@ Vector.i: Vector.cpp.i
 
 # target to preprocess a source file
 Vector.cpp.i:
-	cd /home/artsiomh/tema/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Vector.dir/build.make src/CMakeFiles/Vector.dir/Vector.cpp.i
+	cd /home/artemh/os/lab1/lin/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Vector.dir/build.make src/CMakeFiles/Vector.dir/Vector.cpp.i
 .PHONY : Vector.cpp.i
 
 Vector.s: Vector.cpp.s
@@ -203,7 +203,7 @@ Vector.s: Vector.cpp.s
 
 # target to generate assembly for a file
 Vector.cpp.s:
-	cd /home/artsiomh/tema/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Vector.dir/build.make src/CMakeFiles/Vector.dir/Vector.cpp.s
+	cd /home/artemh/os/lab1/lin/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Vector.dir/build.make src/CMakeFiles/Vector.dir/Vector.cpp.s
 .PHONY : Vector.cpp.s
 
 main.o: main.cpp.o
@@ -211,7 +211,7 @@ main.o: main.cpp.o
 
 # target to build an object file
 main.cpp.o:
-	cd /home/artsiomh/tema/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/main.dir/build.make src/CMakeFiles/main.dir/main.cpp.o
+	cd /home/artemh/os/lab1/lin/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/main.dir/build.make src/CMakeFiles/main.dir/main.cpp.o
 .PHONY : main.cpp.o
 
 main.i: main.cpp.i
@@ -219,7 +219,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	cd /home/artsiomh/tema/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/main.dir/build.make src/CMakeFiles/main.dir/main.cpp.i
+	cd /home/artemh/os/lab1/lin/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/main.dir/build.make src/CMakeFiles/main.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -227,7 +227,7 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	cd /home/artsiomh/tema/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/main.dir/build.make src/CMakeFiles/main.dir/main.cpp.s
+	cd /home/artemh/os/lab1/lin/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/main.dir/build.make src/CMakeFiles/main.dir/main.cpp.s
 .PHONY : main.cpp.s
 
 # Help Target
@@ -261,6 +261,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/artsiomh/tema/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/artemh/os/lab1/lin/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

@@ -1,1 +1,1 @@
-/usr/bin/c++ CMakeFiles/main.dir/main.cpp.o -o main  -Wl,-rpath,/home/artsiomh/tema/build/src libNumber.a libVector.so 
+/usr/bin/c++ CMakeFiles/main.dir/main.cpp.o -o main  -Wl,-rpath,. libNumber.a libVector.so 

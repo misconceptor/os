@@ -1,47 +1,30 @@
 #include "Vector.h"
 #include <iostream>
+#include <cmath>
 
 Vector::Vector() : x(Number::Zero()), y(Number::Zero()) {}
+Vector::Vector(const Number& _x, const Number& _y) : x(_x), y(_y) {}
 
-Vector::Vector(const Number& _x, const Number& _y)
-    : x(_x), y(_y) {}
+Number Vector::getX() const { return x; }
+Number Vector::getY() const { return y; }
 
-Vector::Vector(const Vector& rhs)
-    : x(rhs.x), y(rhs.y) {}
-
-Number Vector::getX() const {
-    return x;
+Vector Vector::add(const Vector& other) const {
+    return Vector(x.add(other.x), y.add(other.y));
 }
 
-Number Vector::getY() const {
-    return y;
+Number Vector::angle() const {
+    return createNumber(std::atan2(y.getVal(), x.getVal()));
+}
+
+Number Vector::radius() const {
+    Number xSquared = x.mul(x);
+    Number ySquared = y.mul(y);
+    return createNumber(std::sqrt(xSquared.add(ySquared).getVal()));
 }
 
 void Vector::print() const {
-    std::cout << '(' << x.getVal() << ' ' << y.getVal() << ")\n";
+    std::cout << "(" << x.getVal() << ", " << y.getVal() << ")" << std::endl;
 }
-Vector Vector::add(const Vector& other) const {
-    Number newX = x.add(other.x);
-    Number newY = y.add(other.y);
-    return Vector(newX, newY);
-}
-Vector Vector::operator+(const Vector& other) const {
-    return this->add(other);
-}
-Number Vector::angle() const {
-    double rad= std::atan2(y.getVal(),x.getVal());
-    return Number(rad);
-}
-Number Vector::radius() const {
-    double r = std::sqrt(x.getVal()*x.getVal()+
-    y.getVal()*y.getVal());
-    return Number(r);
-}
-const Vector& VOne() {
-    static const Vector v(Number::One(), Number::One());
-    return v;
-}
-const Vector& VZero() {
-    static const Vector v(Number::Zero(), Number::Zero());
-    return v;
-}
+
+const Vector VectorZero(Number::Zero(), Number::Zero());
+const Vector VectorOne(Number::One(), Number::One());
