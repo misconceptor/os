@@ -1,4 +1,4 @@
-# Install script for directory: /home/artemh/cccppp
+# Install script for directory: /home/artemh/os/lab4/lin
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -44,7 +44,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/artemh/cccppp/build/src/cmake_install.cmake")
+  include("/home/artemh/os/lab4/lin/build/src/cmake_install.cmake")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT)
@@ -55,5 +55,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/artemh/cccppp/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/artemh/os/lab4/lin/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

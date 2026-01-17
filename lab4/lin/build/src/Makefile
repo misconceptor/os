@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/artemh/cccppp
+CMAKE_SOURCE_DIR = /home/artemh/os/lab4/lin
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/artemh/cccppp/build
+CMAKE_BINARY_DIR = /home/artemh/os/lab4/lin/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,14 +87,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/artemh/cccppp/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/artemh/cccppp/build/CMakeFiles /home/artemh/cccppp/build/src//CMakeFiles/progress.marks
-	cd /home/artemh/cccppp/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/artemh/cccppp/build/CMakeFiles 0
+	cd /home/artemh/os/lab4/lin/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/artemh/os/lab4/lin/build/CMakeFiles /home/artemh/os/lab4/lin/build/src//CMakeFiles/progress.marks
+	cd /home/artemh/os/lab4/lin/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/artemh/os/lab4/lin/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/artemh/cccppp/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/clean
+	cd /home/artemh/os/lab4/lin/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/clean
 .PHONY : clean
 
 # The main clean target
@@ -103,22 +103,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/artemh/cccppp/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/preinstall
+	cd /home/artemh/os/lab4/lin/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/artemh/cccppp/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/preinstall
+	cd /home/artemh/os/lab4/lin/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/artemh/cccppp/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/artemh/os/lab4/lin/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 src/CMakeFiles/killer.dir/rule:
-	cd /home/artemh/cccppp/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/killer.dir/rule
+	cd /home/artemh/os/lab4/lin/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/killer.dir/rule
 .PHONY : src/CMakeFiles/killer.dir/rule
 
 # Convenience name for target.
@@ -127,12 +127,12 @@ killer: src/CMakeFiles/killer.dir/rule
 
 # fast build rule for target.
 killer/fast:
-	cd /home/artemh/cccppp/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/killer.dir/build.make src/CMakeFiles/killer.dir/build
+	cd /home/artemh/os/lab4/lin/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/killer.dir/build.make src/CMakeFiles/killer.dir/build
 .PHONY : killer/fast
 
 # Convenience name for target.
 src/CMakeFiles/user.dir/rule:
-	cd /home/artemh/cccppp/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/user.dir/rule
+	cd /home/artemh/os/lab4/lin/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/user.dir/rule
 .PHONY : src/CMakeFiles/user.dir/rule
 
 # Convenience name for target.
@@ -141,7 +141,7 @@ user: src/CMakeFiles/user.dir/rule
 
 # fast build rule for target.
 user/fast:
-	cd /home/artemh/cccppp/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/user.dir/build.make src/CMakeFiles/user.dir/build
+	cd /home/artemh/os/lab4/lin/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/user.dir/build.make src/CMakeFiles/user.dir/build
 .PHONY : user/fast
 
 killer.o: killer.cpp.o
@@ -149,7 +149,7 @@ killer.o: killer.cpp.o
 
 # target to build an object file
 killer.cpp.o:
-	cd /home/artemh/cccppp/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/killer.dir/build.make src/CMakeFiles/killer.dir/killer.cpp.o
+	cd /home/artemh/os/lab4/lin/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/killer.dir/build.make src/CMakeFiles/killer.dir/killer.cpp.o
 .PHONY : killer.cpp.o
 
 killer.i: killer.cpp.i
@@ -157,7 +157,7 @@ killer.i: killer.cpp.i
 
 # target to preprocess a source file
 killer.cpp.i:
-	cd /home/artemh/cccppp/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/killer.dir/build.make src/CMakeFiles/killer.dir/killer.cpp.i
+	cd /home/artemh/os/lab4/lin/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/killer.dir/build.make src/CMakeFiles/killer.dir/killer.cpp.i
 .PHONY : killer.cpp.i
 
 killer.s: killer.cpp.s
@@ -165,7 +165,7 @@ killer.s: killer.cpp.s
 
 # target to generate assembly for a file
 killer.cpp.s:
-	cd /home/artemh/cccppp/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/killer.dir/build.make src/CMakeFiles/killer.dir/killer.cpp.s
+	cd /home/artemh/os/lab4/lin/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/killer.dir/build.make src/CMakeFiles/killer.dir/killer.cpp.s
 .PHONY : killer.cpp.s
 
 user.o: user.cpp.o
@@ -173,7 +173,7 @@ user.o: user.cpp.o
 
 # target to build an object file
 user.cpp.o:
-	cd /home/artemh/cccppp/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/user.dir/build.make src/CMakeFiles/user.dir/user.cpp.o
+	cd /home/artemh/os/lab4/lin/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/user.dir/build.make src/CMakeFiles/user.dir/user.cpp.o
 .PHONY : user.cpp.o
 
 user.i: user.cpp.i
@@ -181,7 +181,7 @@ user.i: user.cpp.i
 
 # target to preprocess a source file
 user.cpp.i:
-	cd /home/artemh/cccppp/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/user.dir/build.make src/CMakeFiles/user.dir/user.cpp.i
+	cd /home/artemh/os/lab4/lin/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/user.dir/build.make src/CMakeFiles/user.dir/user.cpp.i
 .PHONY : user.cpp.i
 
 user.s: user.cpp.s
@@ -189,7 +189,7 @@ user.s: user.cpp.s
 
 # target to generate assembly for a file
 user.cpp.s:
-	cd /home/artemh/cccppp/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/user.dir/build.make src/CMakeFiles/user.dir/user.cpp.s
+	cd /home/artemh/os/lab4/lin/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/user.dir/build.make src/CMakeFiles/user.dir/user.cpp.s
 .PHONY : user.cpp.s
 
 # Help Target
@@ -219,6 +219,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/artemh/cccppp/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/artemh/os/lab4/lin/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

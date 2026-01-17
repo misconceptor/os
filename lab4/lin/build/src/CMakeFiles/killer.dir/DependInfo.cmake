@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/artemh/cccppp/src/killer.cpp" "src/CMakeFiles/killer.dir/killer.cpp.o" "gcc" "src/CMakeFiles/killer.dir/killer.cpp.o.d"
+  "/home/artemh/os/lab4/lin/src/killer.cpp" "src/CMakeFiles/killer.dir/killer.cpp.o" "gcc" "src/CMakeFiles/killer.dir/killer.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

@@ -1,57 +1,57 @@
 #include <iostream>
-#include <cstdlib>
-#include <cstdio>
-#include <cstring>
+#include <vector>
+#include <string>
 #include <unistd.h>
 #include <sys/wait.h>
-using namespace std;
-bool isProcessRunning(const char* name) {
-    string cmd = string("pgrep -x ") + name + " > /dev/null";
+#include <stdlib.h>
+
+bool isProcessRunning(const std::string& name) {
+    std::string cmd = "pgrep -x " + name + " > /dev/null 2>&1";
     return (system(cmd.c_str()) == 0);
 }
-void runKiller(const char* arg1 = nullptr, const char* arg2 = nullptr) {
+
+void runKiller(const std::vector<std::string>& args) {
     pid_t pid = fork();
-    if (pid == -1) {
-        perror("fork");
-        return;
-    } else if (pid == 0) {
-        if (arg1 && arg2) {
-            char* args[] = {(char*)"./killer", (char*)arg1, (char*)arg2, nullptr};
-            execv(args[0], args);
-        } else {
-            char* args[] = {(char*)"./killer", nullptr};
-            execv(args[0], args);
+    if (pid == 0) {
+        std::vector<char*> c_args;
+        c_args.push_back((char*)"./killer");
+        for (const auto& arg : args) {
+            c_args.push_back((char*)arg.c_str());
         }
-        perror("execv");
-        exit(1);
+        c_args.push_back(nullptr);
+        execvp(c_args[0], c_args.data());
+        exit(1); 
     } else {
-        int status;
-        waitpid(pid, &status, 0);
-        if (WIFEXITED(status)) {
-            cout << "Killer exited with status " << WEXITSTATUS(status) << endl;
-        } else {
-            cout << "Killer did not exit normally" << endl;
-        }
+        waitpid(pid, nullptr, 0);
     }
 }
+
 int main() {
-    //PLEASE LAUNCH NAUTILUS OR VIM MANUALLY BEFORE LAUNCHING MY PROGRAM
-    setenv("PROC_TO_KILL", "nautilus,vim", 1);
-    cout << "PROC_TO_KILL set to: " << getenv("PROC_TO_KILL") << endl;
-    if (isProcessRunning("nautilus")) {
-        cout << "Nautilus is running before Killer." << endl;
-    } else {
-        cout << "Nautilus is NOT running before Killer." << endl;
+    std::string targets = "nautilus,Telegram,gnome-control-c";
+    setenv("PROC_TO_KILL", targets.c_str(), 1);
+    std::cout << "[USER] Environment variable PROC_TO_KILL set to: " << targets << std::endl;
+
+    std::cout << "\n--- Checking processes before Killer ---" << std::endl;
+    std::vector<std::string> procList = {"nautilus", "Telegram", "gnome-control-c"};
+    for (const auto& p : procList) {
+        std::cout << "Process " << p << (isProcessRunning(p) ? " is RUNNING." : " is NOT running.") << std::endl;
     }
-    runKiller();
-    if (!isProcessRunning("nautilus")) {
-        cout << "Nautilus killed successfully by Killer." << endl;
-    } else {
-        cout << "Nautilus is STILL running after Killer." << endl;
+
+    std::cout << "\n[USER] Running Killer (Environment Variable Mode)..." << std::endl;
+    runKiller({}); 
+
+    std::cout << "[USER] Running Killer (--name variation)..." << std::endl;
+    runKiller({"--name", "nautilus"});
+
+    std::cout << "\n--- Checking processes after Killer ---" << std::endl;
+    for (const auto& p : procList) {
+        std::cout << "Process " << p << (isProcessRunning(p) ? " is STILL RUNNING." : " is GONE.") << std::endl;
     }
-    runKiller("--id", "12345");
-    runKiller("--name", "vim");
+
     unsetenv("PROC_TO_KILL");
-    //cout << "PROC_TO_KILL environment variable removed." << endl;
+    if (getenv("PROC_TO_KILL") == nullptr) {
+        std::cout << "\n[USER] Successfully deleted PROC_TO_KILL environment variable." << std::endl;
+    }
+
     return 0;
 }

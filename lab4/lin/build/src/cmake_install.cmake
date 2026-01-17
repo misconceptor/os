@@ -1,4 +1,4 @@
-# Install script for directory: /home/artemh/cccppp/src
+# Install script for directory: /home/artemh/os/lab4/lin/src
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
