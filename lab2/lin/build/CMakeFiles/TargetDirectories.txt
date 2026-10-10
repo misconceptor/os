@@ -1,5 +1,0 @@
-/home/artemh/os/lab2/lin/build/CMakeFiles/edit_cache.dir
-/home/artemh/os/lab2/lin/build/CMakeFiles/rebuild_cache.dir
-/home/artemh/os/lab2/lin/build/src/CMakeFiles/main.dir
-/home/artemh/os/lab2/lin/build/src/CMakeFiles/edit_cache.dir
-/home/artemh/os/lab2/lin/build/src/CMakeFiles/rebuild_cache.dir

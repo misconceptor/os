@@ -1,7 +1,0 @@
-/home/artemh/os/lab1/lin/build/CMakeFiles/edit_cache.dir
-/home/artemh/os/lab1/lin/build/CMakeFiles/rebuild_cache.dir
-/home/artemh/os/lab1/lin/build/src/CMakeFiles/Number.dir
-/home/artemh/os/lab1/lin/build/src/CMakeFiles/Vector.dir
-/home/artemh/os/lab1/lin/build/src/CMakeFiles/main.dir
-/home/artemh/os/lab1/lin/build/src/CMakeFiles/edit_cache.dir
-/home/artemh/os/lab1/lin/build/src/CMakeFiles/rebuild_cache.dir
