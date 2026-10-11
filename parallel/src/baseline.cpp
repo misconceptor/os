@@ -32,19 +32,19 @@ ll measure_baseline(const vi &a, const vi &b, vi &ans, int N) {
 
 int main(int argc, char *argv[]) {
   
-    // if (argc != 2) {
-    //     cerr << "usage: " << argv[0] << " <N>\n";
-    //     return 1;
-    // }
-    // int N = stoi(argv[1]);
-    // if (N <= 0) {
-    //     cerr << "N must be positive\n";
-    //     return 1;
-    // }
+    if (argc != 2) {
+        cerr << "usage: " << argv[0] << " <N>\n";
+        return 1;
+    }
+    int N = stoi(argv[1]);
+    if (N <= 0) {
+        cerr << "N must be positive\n";
+        return 1;
+    }
 
     mt19937 gen(42);
     uniform_int_distribution<int> dist(-100, 100);
-    const int N = 2000;
+    // const int N = 2000;
     vi a(N * N), b(N * N), ans(N * N, 0);
     for (auto &x : a) x = dist(gen);
     for (auto &x : b) x = dist(gen);
