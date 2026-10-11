@@ -1,0 +1,11 @@
+baseline
+2000, 5226894
+
+loops
+2000, 2965690
+
+baseline block
+2000, 50, 2167676
+
+baseline block avx
+2000, 50, 752250

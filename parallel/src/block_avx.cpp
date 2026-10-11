@@ -1,8 +1,9 @@
-/* I K J Block
-no avx
-no unrolling
+/* I K J 
+Block
+avx
+unrolling
 no loops rearrangement
-o2
+o3
 */
 #include <iostream>
 #include <vector>
@@ -15,7 +16,7 @@ using namespace std;
 using vi = vector<int>;
 using ll = long long;
 
-void baseline_block(const vi &a, const vi &b, vi &ans, const int N, const int B) {
+void block_avx(const vi &a, const vi &b, vi &ans, const int N, const int B) {
     for (int ii = 0; ii < N; ii += B)
         for (int jj = 0; jj < N; jj += B)
             for (int kk = 0; kk < N; kk += B) {
@@ -31,10 +32,10 @@ void baseline_block(const vi &a, const vi &b, vi &ans, const int N, const int B)
             }
 }
 
-ll measure_baseline(const vi &a, const vi &b, vi &ans, int N, int B) {
+ll measure_block_avx(const vi &a, const vi &b, vi &ans, int N, int B) {
     fill(ans.begin(), ans.end(), 0);
     auto start = chrono::steady_clock::now();
-    baseline_block(a, b, ans, N, B);
+    block_avx(a, b, ans, N, B);
     auto end = chrono::steady_clock::now();
     return chrono::duration_cast<chrono::microseconds>(end - start).count();
 }
@@ -56,10 +57,10 @@ int main(int argc, char *argv[]) {
     for (auto &x : a) x = dist(gen);
     for (auto &x : b) x = dist(gen);
 
-    measure_baseline(a, b, ans, N, B);
-    ll baseline_time = measure_baseline(a, b, ans, N, B);
+    measure_block_avx(a, b, ans, N, B);
+    ll time = measure_block_avx(a, b, ans, N, B);
 
     //microseconds
-    cout << N << ", " << B << ", " << baseline_time << "\n";
+    cout << N << ", " << B << ", " << time << "\n";
     return 0;
 }
