@@ -30,4 +30,3 @@ target_link_libraries(par2 PRIVATE OpenMP::OpenMP_CXX)
 add_executable(par2_avx par2_avx.cpp)
 target_compile_options(par2_avx PRIVATE -O3 -march=native)
 target_link_libraries(par2_avx PRIVATE OpenMP::OpenMP_CXX)
-

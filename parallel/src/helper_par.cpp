@@ -42,9 +42,9 @@ int main(int argc, char *argv[]) {
 
     cout << "N, B, threads, time_us\n";
 
-    vector<int> P = {1, 2, 4, 6, 8, 16};
+    vector<int> P = {1, 8};
     for (int p : P)
-        if (run_par("./par2_avx", N, B, p) != 0)
+        if (run_par("./par1", N, B, p) != 0)
         // if (run_par("./par1", N, B, p) != 0)
             return 1;
 
