@@ -1,2 +1,5 @@
-add_executable(main main.cpp)
-target_compile_options(main PRIVATE -O2)
+add_executable(stupid stupid.cpp)
+target_compile_options(stupid PRIVATE -O2)
+
+add_executable(pivot pivot.cpp)
+target_compile_options(pivot PRIVATE -O2)
