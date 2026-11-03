@@ -2,6 +2,8 @@
 #include <sys/wait.h>
 #include <iostream>
 #include <string>
+#include <vector>
+
 using namespace std;
 
 int run_program(const string& prog, int N, int M, const string& algo_name) {
@@ -40,11 +42,23 @@ int main(int argc, char *argv[]) {
 
     cout << "algo,N,M,time_ms,residual,rel_error,x0,x1,x2,x3,x4\n";
 
-    if (run_program("./stupid", N, M, "stupid") != 0) return 1;
-    if (run_program("./pivot", N, M, "pivot") != 0) return 1;
+    // Список всех исполняемых файлов для бенчмарка
+    vector<pair<string, string>> programs = {
+        {"./stupid", "stupid"},
+        {"./stupid_par", "stupid_par"},
+        {"./stupid_dd", "stupid_dd"},
+        {"./stupid_dd_par", "stupid_dd_par"},
+        {"./pivot", "pivot"},
+        {"./pivot_par", "pivot_par"},
+        {"./pivot_dd", "pivot_dd"},
+        {"./pivot_dd_par", "pivot_dd_par"}
+    };
 
-    if (run_program("./stupid_par", N, M, "stupid_par") != 0) return 1;
-    if (run_program("./pivot_par", N, M, "pivot_par") != 0) return 1;
+    for (const auto& p : programs) {
+        if (run_program(p.first, N, M, p.second) != 0) {
+            cerr << "Warning: Failed or skipped " << p.first << "\n";
+        }
+    }
 
     return 0;
 }

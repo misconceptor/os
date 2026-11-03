@@ -15,6 +15,12 @@ target_compile_options(stupid PRIVATE -O2)
 add_executable(pivot pivot.cpp utils.h)
 target_compile_options(pivot PRIVATE -O2)
 
+add_executable(pivot_dd pivot_dd.cpp dd.h)
+target_compile_options(pivot_dd PRIVATE -O2)
+
+add_executable(stupid_dd stupid_dd.cpp dd.h)
+target_compile_options(stupid_dd PRIVATE -O2)
+
 add_executable(stupid_par stupid_par.cpp utils.h)
 target_compile_options(stupid_par PRIVATE -O2)
 target_link_libraries(stupid_par PRIVATE OpenMP::OpenMP_CXX)
@@ -22,3 +28,11 @@ target_link_libraries(stupid_par PRIVATE OpenMP::OpenMP_CXX)
 add_executable(pivot_par pivot_par.cpp utils.h)
 target_compile_options(pivot_par PRIVATE -O2)
 target_link_libraries(pivot_par PRIVATE OpenMP::OpenMP_CXX)
+
+add_executable(pivot_dd_par pivot_dd_par.cpp utils.h)
+target_compile_options(pivot_dd_par PRIVATE -O2)
+target_link_libraries(pivot_dd_par PRIVATE OpenMP::OpenMP_CXX)
+
+add_executable(stupid_dd_par stupid_dd_par.cpp dd.h)
+target_compile_options(stupid_dd_par PRIVATE -O2)
+target_link_libraries(stupid_dd_par PRIVATE OpenMP::OpenMP_CXX)
