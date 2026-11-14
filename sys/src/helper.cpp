@@ -42,7 +42,6 @@ int main(int argc, char *argv[]) {
 
     cout << "algo,N,M,time_ms,residual,rel_error,x0,x1,x2,x3,x4\n";
 
-    // Список всех исполняемых файлов для бенчмарка
     vector<pair<string, string>> programs = {
         {"./stupid", "stupid"},
         {"./stupid_par", "stupid_par"},
